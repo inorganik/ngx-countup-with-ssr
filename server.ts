@@ -20,6 +20,11 @@ import 'zone.js/dist/zone-node';
 import * as express from 'express';
 import {join} from 'path';
 
+// for prerendering:
+import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { renderModuleFactory } from '@angular/platform-server';
+import { mkdirSync } from 'mkdir-recursive';
+
 // Express server
 const app = express();
 
@@ -52,7 +57,34 @@ app.get('*', (req, res) => {
   res.render('index', { req });
 });
 
-// Start up the Node server
-app.listen(PORT, () => {
-  console.log(`Node Express server listening on http://localhost:${PORT}`);
-});
+if (process.env.PRERENDER) {
+
+  const routes = ['/'];
+  const template = readFileSync(join(__dirname, DIST_FOLDER, 'index.html')).toString();
+
+  Promise.all(
+    routes.map(route =>
+      renderModuleFactory(AppServerModuleNgFactory, {
+        document: template,
+        url: route,
+        extraProviders: [
+          provideModuleMap(LAZY_MODULE_MAP)
+        ]
+      }).then(html => [route, html])
+    )
+  ).then(results => {
+    results.forEach(([route, html]) => {
+      const fullPath = join('./public', route);
+      if (!existsSync(fullPath)) { mkdirSync(fullPath); }
+      writeFileSync(join(fullPath, 'index.html'), html);
+    });
+    process.exit();
+  });
+
+} else if (!process.env.FUNCTION_NAME) {
+
+  // spin up a Node server
+  app.listen(PORT, () => {
+    console.log(`Node server listening on http://localhost:${PORT}`);
+  });
+}

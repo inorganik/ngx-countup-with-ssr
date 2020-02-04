@@ -22,7 +22,6 @@ import {join} from 'path';
 
 // for prerendering:
 import { readFileSync, writeFileSync, existsSync } from 'fs';
-import { renderModuleFactory } from '@angular/platform-server';
 import { mkdirSync } from 'mkdir-recursive';
 
 // Express server
@@ -32,7 +31,13 @@ const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = join(process.cwd(), 'dist/browser');
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
-const {AppServerModuleNgFactory, LAZY_MODULE_MAP, ngExpressEngine, provideModuleMap} = require('./dist/server/main');
+const {
+  AppServerModuleNgFactory,
+  LAZY_MODULE_MAP,
+  ngExpressEngine,
+  provideModuleMap,
+  renderModuleFactory
+} = require('./dist/server/main');
 
 // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
 app.engine('html', ngExpressEngine({
@@ -58,7 +63,6 @@ app.get('*', (req, res) => {
 });
 
 if (process.env.PRERENDER) {
-
   const routes = ['/'];
   const template = readFileSync(join(__dirname, DIST_FOLDER, 'index.html')).toString();
 
@@ -80,10 +84,7 @@ if (process.env.PRERENDER) {
     });
     process.exit();
   });
-
-} else if (!process.env.FUNCTION_NAME) {
-
-  // spin up a Node server
+} else {
   app.listen(PORT, () => {
     console.log(`Node server listening on http://localhost:${PORT}`);
   });

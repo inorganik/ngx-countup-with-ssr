@@ -2146,6 +2146,10 @@ cosmiconfig@^5.0.0:
     js-yaml "^3.13.1"
     parse-json "^4.0.0"
 
+countup.js@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/countup.js/-/countup.js-2.0.5.tgz#7f6b5a329c1bedea9bdb702e628e2bf7bef3c75c"
+
 coverage-istanbul-loader@2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/coverage-istanbul-loader/-/coverage-istanbul-loader-2.0.3.tgz#87d42f03fa0fd3fa8743ec76945d9d67f105722a"
@@ -4145,8 +4149,8 @@ lodash.clonedeep@^4.5.0:
   resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
 
 lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.5:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
+  version "4.17.19"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
 
 log4js@^4.0.0:
   version "4.5.1"
@@ -4415,6 +4419,10 @@ mixin-deep@^1.2.0:
     for-in "^1.0.2"
     is-extendable "^1.0.1"
 
+mkdir-recursive@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mkdir-recursive/-/mkdir-recursive-0.4.0.tgz#7af3312e3e04987b1fba8fa873850f9e4d183cd1"
+
 mkdirp@0.5.x, mkdirp@^0.5.0, mkdirp@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
@@ -4486,6 +4494,13 @@ negotiator@0.6.2:
 neo-async@^2.5.0, neo-async@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
+
+ngx-countup@^7.3.0:
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/ngx-countup/-/ngx-countup-7.3.1.tgz#16bb21947ce40fc4485aece12fce8215c9cb43d8"
+  dependencies:
+    countup.js "^2.0.5"
+    tslib "^1.9.0"
 
 nice-try@^1.0.4:
   version "1.0.5"

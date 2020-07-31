@@ -63,8 +63,8 @@ app.get('*', (req, res) => {
 });
 
 if (process.env.PRERENDER) {
-  const routes = ['/'];
   const template = readFileSync(join(__dirname, DIST_FOLDER, 'index.html')).toString();
+  const routes = ['/', '/lazy'];
 
   Promise.all(
     routes.map(route =>

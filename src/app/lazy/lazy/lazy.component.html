@@ -1,0 +1,7 @@
+<h3>Lazy loaded route</h3>
+<h1 [countUp]="endVal" [options]="opts" (complete)="doThisOnComplete()">0</h1>
+<label>Set the end value:</label>
+<input type="text" [(ngModel)]="pickANumber" style="display:block">
+<button (click)="applyEndVal()">Apply</button>
+<button (click)="useOptions()">Use options</button>
+<button (click)="unsetOptions()">Unset options</button>

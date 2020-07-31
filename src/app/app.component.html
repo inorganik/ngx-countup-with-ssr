@@ -1,7 +1,7 @@
-<h3>ngx-countup with SSR and prerendering</h3>
-<h1 [countUp]="endVal" [options]="opts" (complete)="doThisOnComplete()">0</h1>
-<label>Set the end value:</label>
-<input type="text" [(ngModel)]="pickANumber" style="display:block">
-<button (click)="applyEndVal()">Apply</button>
-<button (click)="useOptions()">Use options</button>
-<button (click)="unsetOptions()">Unset options</button>
+<h1>ngx-countup with SSR and prerendering</h1>
+
+<p><a routerLink="/">Go to root demo</a></p>
+<p><a routerLink="/lazy">Go to lazy route</a></p>
+<hr>
+<br>
+<router-outlet></router-outlet>

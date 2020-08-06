@@ -16,16 +16,21 @@
  */
 
 import 'zone.js/dist/zone-node';
+import 'reflect-metadata';
 
 import * as express from 'express';
 import {join} from 'path';
+
+// Polyfills required for Firebase
+(global as any).WebSocket = require('ws');
+(global as any).XMLHttpRequest = require('xhr2');
 
 // for prerendering:
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { mkdirSync } from 'mkdir-recursive';
 
 // Express server
-const app = express();
+export const app = express();
 
 const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = join(process.cwd(), 'dist/browser');
@@ -84,7 +89,7 @@ if (process.env.PRERENDER) {
     });
     process.exit();
   });
-} else {
+} else if (!process.env.FUNCTION_NAME) {
   app.listen(PORT, () => {
     console.log(`Node server listening on http://localhost:${PORT}`);
   });

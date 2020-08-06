@@ -1,11 +1,14 @@
 {
   "targets": {
-    "superfeed-84031": {
+    "ssr-demo-b3ef3": {
       "hosting": {
         "ng8ssr": [
-          "superfeed-84031"
+          "ssr-demo-b3ef3"
         ]
       }
     }
+  },
+  "projects": {
+    "default": "ssr-demo-b3ef3"
   }
 }

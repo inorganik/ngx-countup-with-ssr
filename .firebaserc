@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "superfeed-84031": {
+      "hosting": {
+        "ng8ssr": [
+          "superfeed-84031"
+        ]
+      }
+    }
+  }
+}

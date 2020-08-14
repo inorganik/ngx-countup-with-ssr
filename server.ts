@@ -42,7 +42,7 @@ const {
   ngExpressEngine,
   provideModuleMap,
   renderModuleFactory
-} = require('./dist/server/main');
+} = require('./dist/webpack/main');
 
 // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
 app.engine('html', ngExpressEngine({
